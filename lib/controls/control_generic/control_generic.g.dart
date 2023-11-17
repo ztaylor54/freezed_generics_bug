@@ -11,9 +11,11 @@ _$ControlGenericImpl<T> _$$ControlGenericImplFromJson<T>(
   T Function(Object? json) fromJsonT,
 ) =>
     _$ControlGenericImpl<T>(
-      string: json['string'] as String,
-      number: json['number'] as int,
       list: (json['list'] as List<dynamic>).map(fromJsonT).toList(),
+      map: (json['map'] as Map<String, dynamic>).map(
+        (k, e) => MapEntry(k, fromJsonT(e)),
+      ),
+      set: (json['set'] as List<dynamic>).map(fromJsonT).toSet(),
     );
 
 Map<String, dynamic> _$$ControlGenericImplToJson<T>(
@@ -21,7 +23,7 @@ Map<String, dynamic> _$$ControlGenericImplToJson<T>(
   Object? Function(T value) toJsonT,
 ) =>
     <String, dynamic>{
-      'string': instance.string,
-      'number': instance.number,
       'list': instance.list.map(toJsonT).toList(),
+      'map': instance.map.map((k, e) => MapEntry(k, toJsonT(e))),
+      'set': instance.set.map(toJsonT).toList(),
     };

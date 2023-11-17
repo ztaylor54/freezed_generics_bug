@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:freezed_bug/test_data.dart';
 
 void main() {
   runApp(const MyApp());
@@ -71,10 +70,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   void initState() {
-    /// run tests
-    ///
-    TestData.runTest();
-
     super.initState();
   }
 

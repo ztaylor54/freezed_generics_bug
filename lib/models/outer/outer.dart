@@ -1,5 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:freezed_bug/inner/inner.dart';
+
+/// COMMENT THIS OUT DURING CODEGEN
+import 'package:freezed_bug/models/inner/inner.dart';
 
 part 'outer.freezed.dart';
 part 'outer.g.dart';

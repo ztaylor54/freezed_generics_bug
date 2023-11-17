@@ -21,9 +21,9 @@ ControlGeneric<T> _$ControlGenericFromJson<T>(
 
 /// @nodoc
 mixin _$ControlGeneric<T> {
-  String get string => throw _privateConstructorUsedError;
-  int get number => throw _privateConstructorUsedError;
   List<T> get list => throw _privateConstructorUsedError;
+  Map<String, T> get map => throw _privateConstructorUsedError;
+  Set<T> get set => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson(Object? Function(T) toJsonT) =>
       throw _privateConstructorUsedError;
@@ -38,7 +38,7 @@ abstract class $ControlGenericCopyWith<T, $Res> {
           ControlGeneric<T> value, $Res Function(ControlGeneric<T>) then) =
       _$ControlGenericCopyWithImpl<T, $Res, ControlGeneric<T>>;
   @useResult
-  $Res call({String string, int number, List<T> list});
+  $Res call({List<T> list, Map<String, T> map, Set<T> set});
 }
 
 /// @nodoc
@@ -54,23 +54,23 @@ class _$ControlGenericCopyWithImpl<T, $Res, $Val extends ControlGeneric<T>>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? string = null,
-    Object? number = null,
     Object? list = null,
+    Object? map = null,
+    Object? set = null,
   }) {
     return _then(_value.copyWith(
-      string: null == string
-          ? _value.string
-          : string // ignore: cast_nullable_to_non_nullable
-              as String,
-      number: null == number
-          ? _value.number
-          : number // ignore: cast_nullable_to_non_nullable
-              as int,
       list: null == list
           ? _value.list
           : list // ignore: cast_nullable_to_non_nullable
               as List<T>,
+      map: null == map
+          ? _value.map
+          : map // ignore: cast_nullable_to_non_nullable
+              as Map<String, T>,
+      set: null == set
+          ? _value.set
+          : set // ignore: cast_nullable_to_non_nullable
+              as Set<T>,
     ) as $Val);
   }
 }
@@ -83,7 +83,7 @@ abstract class _$$ControlGenericImplCopyWith<T, $Res>
       __$$ControlGenericImplCopyWithImpl<T, $Res>;
   @override
   @useResult
-  $Res call({String string, int number, List<T> list});
+  $Res call({List<T> list, Map<String, T> map, Set<T> set});
 }
 
 /// @nodoc
@@ -97,23 +97,23 @@ class __$$ControlGenericImplCopyWithImpl<T, $Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? string = null,
-    Object? number = null,
     Object? list = null,
+    Object? map = null,
+    Object? set = null,
   }) {
     return _then(_$ControlGenericImpl<T>(
-      string: null == string
-          ? _value.string
-          : string // ignore: cast_nullable_to_non_nullable
-              as String,
-      number: null == number
-          ? _value.number
-          : number // ignore: cast_nullable_to_non_nullable
-              as int,
       list: null == list
           ? _value._list
           : list // ignore: cast_nullable_to_non_nullable
               as List<T>,
+      map: null == map
+          ? _value._map
+          : map // ignore: cast_nullable_to_non_nullable
+              as Map<String, T>,
+      set: null == set
+          ? _value._set
+          : set // ignore: cast_nullable_to_non_nullable
+              as Set<T>,
     ));
   }
 }
@@ -122,17 +122,17 @@ class __$$ControlGenericImplCopyWithImpl<T, $Res>
 @JsonSerializable(genericArgumentFactories: true)
 class _$ControlGenericImpl<T> implements _ControlGeneric<T> {
   const _$ControlGenericImpl(
-      {required this.string, required this.number, required final List<T> list})
-      : _list = list;
+      {required final List<T> list,
+      required final Map<String, T> map,
+      required final Set<T> set})
+      : _list = list,
+        _map = map,
+        _set = set;
 
   factory _$ControlGenericImpl.fromJson(
           Map<String, dynamic> json, T Function(Object?) fromJsonT) =>
       _$$ControlGenericImplFromJson(json, fromJsonT);
 
-  @override
-  final String string;
-  @override
-  final int number;
   final List<T> _list;
   @override
   List<T> get list {
@@ -141,9 +141,25 @@ class _$ControlGenericImpl<T> implements _ControlGeneric<T> {
     return EqualUnmodifiableListView(_list);
   }
 
+  final Map<String, T> _map;
+  @override
+  Map<String, T> get map {
+    if (_map is EqualUnmodifiableMapView) return _map;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_map);
+  }
+
+  final Set<T> _set;
+  @override
+  Set<T> get set {
+    if (_set is EqualUnmodifiableSetView) return _set;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableSetView(_set);
+  }
+
   @override
   String toString() {
-    return 'ControlGeneric<$T>(string: $string, number: $number, list: $list)';
+    return 'ControlGeneric<$T>(list: $list, map: $map, set: $set)';
   }
 
   @override
@@ -151,15 +167,18 @@ class _$ControlGenericImpl<T> implements _ControlGeneric<T> {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ControlGenericImpl<T> &&
-            (identical(other.string, string) || other.string == string) &&
-            (identical(other.number, number) || other.number == number) &&
-            const DeepCollectionEquality().equals(other._list, _list));
+            const DeepCollectionEquality().equals(other._list, _list) &&
+            const DeepCollectionEquality().equals(other._map, _map) &&
+            const DeepCollectionEquality().equals(other._set, _set));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, string, number, const DeepCollectionEquality().hash(_list));
+      runtimeType,
+      const DeepCollectionEquality().hash(_list),
+      const DeepCollectionEquality().hash(_map),
+      const DeepCollectionEquality().hash(_set));
 
   @JsonKey(ignore: true)
   @override
@@ -176,20 +195,20 @@ class _$ControlGenericImpl<T> implements _ControlGeneric<T> {
 
 abstract class _ControlGeneric<T> implements ControlGeneric<T> {
   const factory _ControlGeneric(
-      {required final String string,
-      required final int number,
-      required final List<T> list}) = _$ControlGenericImpl<T>;
+      {required final List<T> list,
+      required final Map<String, T> map,
+      required final Set<T> set}) = _$ControlGenericImpl<T>;
 
   factory _ControlGeneric.fromJson(
           Map<String, dynamic> json, T Function(Object?) fromJsonT) =
       _$ControlGenericImpl<T>.fromJson;
 
   @override
-  String get string;
-  @override
-  int get number;
-  @override
   List<T> get list;
+  @override
+  Map<String, T> get map;
+  @override
+  Set<T> get set;
   @override
   @JsonKey(ignore: true)
   _$$ControlGenericImplCopyWith<T, _$ControlGenericImpl<T>> get copyWith =>
