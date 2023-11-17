@@ -1,0 +1,8 @@
+# fix json serialization on nested freezed objects. see: https://github.com/rrousselGit/freezed/issues/86
+targets:
+  $default:
+    builders:
+      json_serializable:
+        options:
+          explicit_to_json: true
+          generic_argument_factories: true
